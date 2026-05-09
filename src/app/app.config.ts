@@ -34,6 +34,29 @@ import { routes } from './app.routes';
 
 import { environment } from '../environments/environment';
 
+import { provideStore }
+from '@ngrx/store';
+
+import { provideEffects }
+from '@ngrx/effects';
+
+import { provideStoreDevtools }
+from '@ngrx/store-devtools';
+
+import { expenseReducer }
+from './store/reducers/expense.reducer';
+
+import { ExpenseEffects }
+from './store/effects/expense.effects';
+
+import {
+  withInterceptors
+} from '@angular/common/http';
+
+import {
+  authTokenInterceptor
+} from './interceptors/auth-token.interceptor';
+
 export const appConfig: ApplicationConfig = {
 
   providers: [
@@ -61,11 +84,23 @@ export const appConfig: ApplicationConfig = {
       getAuth()
     ),
 
-    provideHttpClient(),
+   provideHttpClient(withInterceptors([authTokenInterceptor])),
 
     provideAnimationsAsync(),
 
-    provideNativeDateAdapter()
+    provideNativeDateAdapter(),
+
+    provideStore({
+    expenses: expenseReducer
+    }),
+
+    provideEffects([
+    ExpenseEffects
+    ]),
+
+    provideStoreDevtools({
+    maxAge: 25
+    }),
 
   ]
 };

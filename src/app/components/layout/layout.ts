@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './layout.html',
   styleUrl: './layout.scss',
+  
 })
 export class Layout {
 

@@ -1,1 +1,86 @@
 <p>expense-form-dialog works!</p>
+<h2>Add Expense</h2>
+
+<form [formGroup]="form">
+
+  <mat-form-field appearance="outline">
+    <mat-label>Amount</mat-label>
+
+    <input
+      matInput
+      type="number"
+      formControlName="amount"
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Category</mat-label>
+
+    <mat-select formControlName="category">
+
+      @for (category of categories; track category) {
+
+        <mat-option [value]="category">
+          {{ category }}
+        </mat-option>
+
+      }
+
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+
+    <mat-label>Description</mat-label>
+
+    <textarea
+      matInput
+      formControlName="description">
+    </textarea>
+
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+
+    <mat-label>Date</mat-label>
+
+    <input
+      matInput
+      [matDatepicker]="picker"
+      formControlName="date"
+    />
+
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="picker">
+    </mat-datepicker-toggle>
+
+    <mat-datepicker #picker />
+
+  </mat-form-field>
+
+  <mat-radio-group
+    formControlName="paymentMode">
+
+    @for (mode of paymentModes; track mode) {
+
+      <mat-radio-button [value]="mode">
+        {{ mode }}
+      </mat-radio-button>
+
+    }
+
+  </mat-radio-group>
+
+  <br /><br />
+
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="save()">
+
+    Save
+
+  </button>
+
+</form>

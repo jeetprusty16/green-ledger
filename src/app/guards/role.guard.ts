@@ -1,5 +1,31 @@
-import { CanActivateFn } from '@angular/router';
+import { inject } from '@angular/core';
 
-export const roleGuard: CanActivateFn = () => {
-  return true;
+import {
+  CanActivateFn,
+  Router
+} from '@angular/router';
+
+export const roleGuard:
+CanActivateFn = () => {
+
+  const router =
+    inject(Router);
+
+  const role =
+    localStorage.getItem(
+      'gl_role'
+    );
+
+  if (
+    role === 'admin' ||
+    role === 'member'
+  ) {
+    return true;
+  }
+
+  router.navigate([
+    '/dashboard'
+  ]);
+
+  return false;
 };
