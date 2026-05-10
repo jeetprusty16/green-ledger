@@ -1,0 +1,26 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.payment-group {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}

@@ -88,13 +88,29 @@ implements OnInit {
       );
   }
 
+  expenses: any[] = [];
+
   openDialog() {
 
+  const dialogRef =
     this.dialog.open(
       ExpenseFormDialog,
       {
         width: '500px'
       }
     );
-  }
+
+  dialogRef.afterClosed()
+    .subscribe(result => {
+
+      if (result) {
+
+        this.expenses.push(result);
+
+        this.expenses = [
+          ...this.expenses
+        ];
+      }
+    });
+}
 }

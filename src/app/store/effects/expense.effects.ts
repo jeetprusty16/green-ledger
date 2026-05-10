@@ -22,39 +22,36 @@ export class ExpenseEffects {
   private expenseService =
     inject(ExpenseService);
 
-  loadExpenses$ = createEffect(() =>
+  addExpense$ = createEffect(() =>
 
-    this.actions$.pipe(
+  this.actions$.pipe(
 
-      ofType(
-        ExpenseActions.loadExpenses
-      ),
+    ofType(
+      ExpenseActions.addExpense
+    ),
 
-      switchMap(() =>
+    switchMap(action =>
 
-        this.expenseService
-          .getExpenses()
+      this.expenseService
+        .addExpense(action.expense)
 
-          .pipe(
+        .pipe(
 
-            map(expenses =>
+          map(() =>
 
-              ExpenseActions
-                .loadExpensesSuccess({
-                  expenses
-                })
-            ),
+            ExpenseActions.loadExpenses()
+          ),
 
-            catchError(error =>
+          catchError(error =>
 
-              of(
-                ExpenseActions.setError({
-                  error: error.message
-                })
-              )
+            of(
+              ExpenseActions.setError({
+                error: error.message
+              })
             )
           )
-      )
+        )
     )
-  );
+  )
+);
 }

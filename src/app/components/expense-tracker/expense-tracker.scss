@@ -1,7 +1,18 @@
 .container {
-  padding: 20px;
+  padding: 24px;
+}
+
+h1 {
+  margin-bottom: 20px;
 }
 
 table {
   width: 100%;
+  background: white;
+  border-radius: 12px;
+  //overflow: hidden;
+}
+
+button {
+  margin-bottom: 20px;
 }

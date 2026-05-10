@@ -1,4 +1,4 @@
-<p>expense-tracker works!</p>
+
 <div class="container">
 
   <h1>GreenLedger Expenses</h1>
@@ -16,7 +16,7 @@
 
   <table
     mat-table
-    [dataSource]="(expenses$ | async) ?? []">
+    [dataSource]="expenses">
 
     <!-- DATE -->
     <ng-container matColumnDef="date">
