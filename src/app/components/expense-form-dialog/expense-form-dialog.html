@@ -70,21 +70,23 @@
 
   </div>
 
-  <div class="payment-group">
+  <mat-radio-group
+  formControlName="paymentMode"
+  class="payment-group">
 
-    <mat-radio-button value="Cash">
-      Cash
-    </mat-radio-button>
+  <mat-radio-button value="Cash">
+    Cash
+  </mat-radio-button>
 
-    <mat-radio-button value="UPI">
-      UPI
-    </mat-radio-button>
+  <mat-radio-button value="UPI">
+    UPI
+  </mat-radio-button>
 
-    <mat-radio-button value="Card">
-      Card
-    </mat-radio-button>
+  <mat-radio-button value="Card">
+    Card
+  </mat-radio-button>
 
-  </div>
+</mat-radio-group>
 
   <div class="actions">
 
